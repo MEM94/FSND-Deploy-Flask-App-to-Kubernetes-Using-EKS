@@ -17,6 +17,9 @@ _mailinglist
 docs/_build/
 __pycache__
 .env_file
+trust.json
+Dockerfile
+.vscode
 
 # Coverage reports
 htmlcov/
