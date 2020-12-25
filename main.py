@@ -12,7 +12,7 @@ from flask import Flask, jsonify, request, abort
 
 
 JWT_SECRET = os.environ.get('JWT_SECRET', 'abc123abc1234')
-LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
+LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
 
 
 def _logger():
@@ -91,9 +91,10 @@ def decode_jwt():
         abort(401)
     data = request.headers['Authorization']
     token = str.replace(str(data), 'Bearer ', '')
+    
     try:
-        # data = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
-        print("data",data)
+        data = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
+        print(data)
     except: # pylint: disable=bare-except
         abort(401)
 
